@@ -1,5 +1,21 @@
 from tkinter import *
 from tkinter import messagebox
+import re
+
+patron_exp = re.compile('^([A-Z][0-9]{3}[a-z]+[\W]{3})$')
+
+def val_expresion():
+    try:
+        exp = str(ent_expresion.get())
+        if (patron_exp.match(exp)):
+            return res.set("La expresion insertada es valida")
+        else:
+            return res.set("La expresion insertada no es valida")
+    except:
+        messagebox.showinfo("ERROR", "Por favor ingresa  solo números enteros")
+
+def cerrar():
+    root.destroy()
 
 root = Tk()
 root.title("Expresiones Regulares")
